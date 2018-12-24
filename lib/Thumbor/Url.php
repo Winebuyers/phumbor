@@ -46,6 +46,13 @@ class Url
 
         $signature = $secret ? self::sign($imgPath, $secret) : 'unsafe';
 
+        if('unsafe' == $signature) {
+            return sprintf(
+                '%s/%s',
+                $server,
+                $imgPath
+            );    
+        }
         return sprintf(
             '%s/%s/%s',
             $server,
